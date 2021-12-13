@@ -3,6 +3,8 @@
 The api call be like this: http://localhost:3000/api/project1/sp=getCustomers?custid=1
 
 The sample response be like: 
+
+
 {
     "response": {
         "user": [
