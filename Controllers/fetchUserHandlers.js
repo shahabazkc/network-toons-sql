@@ -14,7 +14,7 @@ const fetchUserHandler = (userId) => {
                     //Query for Fetching the user address from address table with reference userId
                     sqlConnection.query(`select * from usersaddress where userId=${userId};`, ((err, result) => {
                         if (!err) {
-                            resolve({ user, result, status: true });
+                            resolve({ user, address: result, status: true });
                         }
                         else return { status: false };
                     }));
