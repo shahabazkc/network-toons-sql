@@ -9,9 +9,25 @@ var sqlConnection = sql.createConnection({
     multipleStatements: true,
     connectionLimit: 10
 });
+
+
 sqlConnection.connect((err) => {
-    if (!err) console.log("Connected Successfully");
+    if (!err) {
+        console.log("Connected Successfully");
+        sqlConnection.query(process.env.CREATE_USER_TABLE_QUERY, ((err, res) => {
+            if (!err) {
+                sqlConnection.query(process.env.CREATE_USERADDRESS_TABLE_QUERY, ((err, result) => {
+                    if (!err) {
+                        console.log("Created Tables If Not Exist");
+                    }else console.log(err);
+                }))
+            }
+            else console.log(err);
+        }))
+    }
     else console.log(err)
 });
+
+
 
 module.exports = { sqlConnection };
